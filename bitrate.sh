@@ -16,8 +16,8 @@ j=0
 
 for i in "${arr1[@]}"
 do
-	ffmpeg -i ${arr[1]} -c:v:0 libx264 -x264-params "nal-hrd=cbr:force-cfr=1" -b:v "$i"M -preset slow -g 48 -sc_threshold 0  "output_$i.mp4"
-	# echo "Video ${arr[0]}/output_$i.mp4 is done"
+5M -maxrate:v:0 5M 
+	ffmpeg -i ${arr[1]} -c:v:0 libx264 -x264-params "nal-hrd=cbr:force-cfr=1" -b:v "$i"M -minrate:v:0 5M -bufsize:v:0 10M -preset slow -g 48 -sc_threshold 0 -keyint_min 48  "output_$i.mp4"
 	arr2[$j]="Video ${arr[0]}/output_$i.mp4 is done"
 	j=$((j+1))
 done
