@@ -14,20 +14,29 @@ done
 
 j=0
 
+counter=0
 for i in "${arr1[@]}"
 do
-5M -maxrate:v:0 5M 
-	ffmpeg -i ${arr[1]} -c:v:0 libx264 -x264-params "nal-hrd=cbr:force-cfr=1" -b:v "$i"M -minrate:v:0 5M -bufsize:v:0 10M -preset slow -g 48 -sc_threshold 0 -keyint_min 48  "output_$i.mp4"
+	ffmpeg -i ${arr[1]} -c:v:0 libx264 -x264-params "nal-hrd=cbr:force-cfr=1 " -b:v "$i"M -minrate:v:0 5M -bufsize:v:0 10M -preset slow -g 48 -sc_threshold 0 -keyint_min 48  "output_$i.mp4"
 	arr2[$j]="Video ${arr[0]}/output_$i.mp4 is done"
 	j=$((j+1))
 done
 
-
 for ((i=0;i<$j;i++))
 do
-	echo "${arr2[$i]}"
+	echo "${arr2[$i]}"	
 
 done
+
+# mkdir "${arr[1]}/segments"
+
+for i in "${arr1[@]}"
+do
+	arr3=("${arr[0]}/output_$i.mp4" "${arr[2]}" "output_$i" "${arr[0]}")
+	bash "${arr[3]}/hsl.sh" "${arr3[@]}"
+done
+
+
 
 
 
