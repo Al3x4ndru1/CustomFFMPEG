@@ -24,6 +24,6 @@ ffmpeg -y -i "${arr[1]}/${arr[0]}" \
         -c copy -hls_segment_type hls\
         -hls_time 2 -hls_playlist_type vod \
         -hls_flags independent_segments -hls_segment_type mpegts \
-        -hls_segment_filename "${arr[1]}/segments/${arr[3]}/segment_${arr[2]}"/data%02d.ts "${arr[1]}/segments/${arr[3]}/stream_${arr[3]}_${arr[2]}".m3u8
+        -hls_segment_filename "${arr[1]}/segments/${arr[3]}/segment_${arr[2]}"/data%02d.ts "${arr[1]}/segments/${arr[3]}/segment_${arr[2]}/stream_${arr[3]}_${arr[2]}".m3u8
 
 
