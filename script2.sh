@@ -36,4 +36,7 @@ then
 				bash "$path"/bitrate.sh "${arr[1]}_720_directory" "output.mp4" "${arr[0]}" "$path"
 		fi		
 	done
+
+
+	sudo cp -r segments/ /var/www/html/
 fi
